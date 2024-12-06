@@ -5,5 +5,9 @@ export const loginValidationSchema = Yup.object().shape({
     password: Yup
       .string()
       .required('Please enter your password.')
-      .min(4, 'Password is too short - must be at least 4 chars.'),
+      .test(
+        'min-length',
+        'Password is too short - must be at least 4 chars.',
+        (value) => !value || value.length >= 4 
+      ),
   });

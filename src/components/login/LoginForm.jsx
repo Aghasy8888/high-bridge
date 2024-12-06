@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import * as Yup from 'yup';
 import { Checkbox, LoginFormHeader } from '../../common/';
 import { loginValidationSchema } from '../../helpers/validationSchemas';
 import { loginDefaultValues } from '../../data';
 import { Link } from 'react-router-dom';
+import { FormInputGroup } from './';
+import useFocusRef from '../../hooks/useFocusRef';
 
 const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [formValues, setFormValues] = useState(loginDefaultValues);
   const [validationErrors, setValidationErrors] = useState({});
-
+  const emailInputRef = useRef(null);
+  useFocusRef(emailInputRef, []);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = formValues;
@@ -42,13 +46,8 @@ const LoginForm = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target;    
     setFormValues((prevValues) => ({ ...prevValues, [name]: value }));
-  };
-
-  const onEmptyState = () => {
-    setFormValues(loginDefaultValues);
-    setValidationErrors({});
   };
 
   return (
@@ -56,9 +55,16 @@ const LoginForm = () => {
       <LoginFormHeader />
       <form
         noValidate
-        className="flex flex-col gap-4 mt-4 w-full text-[13px]"
+        className="flex flex-col gap-4 mt-7 w-full text-[13px]"
         onSubmit={handleSubmit}
       >
+        <FormInputGroup
+          formValues={formValues}
+          handleChange={handleChange}
+          validationErrors={validationErrors}
+          inputRef={emailInputRef}
+        />
+
         <div className="flex justify-between">
           <Checkbox
             checked={rememberMe}
@@ -67,10 +73,7 @@ const LoginForm = () => {
             inputLabel="Remember Me"
           />
 
-          <Link
-            href={''}
-            className='text-middleGray'
-          >
+          <Link href={''} className="text-middleGray">
             Forgot Password?
           </Link>
         </div>

@@ -58,3 +58,8 @@ input[type="checkbox"] {
     border: none;
     cursor: pointer;
   }
+
+  input {
+    all: unset; /* Resets all inherited and non-inherited properties */
+    box-sizing: border-box; /* Ensures padding and border are included in width/height */
+  }

@@ -14,7 +14,9 @@ export default {
       colors: {
         darkGray: '#212121',
         lighterGray: '#e0e0e0',
-        middleGray: '#424242'
+        middleGray: '#424242',
+        whiteV1: '#bdbdbd',
+        whiteV2: '#bebebe'
       },
     },
   },
