@@ -13,6 +13,7 @@ const FormInputGroup = ({
   return (
     <div className="flex flex-col gap-6">
       <InputWithTitle
+        autoComplete="email"
         handleChange={handleChange}
         inputValue={formValues.email}
         error={validationErrors.email}
@@ -20,9 +21,11 @@ const FormInputGroup = ({
         inputRef={inputRef}
         title="Email"
         type="email"
+        required
       />
 
       <InputWithTitle
+        autoComplete="current-password"
         handleChange={handleChange}
         setShowPassword={setShowPassword}
         inputValue={formValues.password}
@@ -31,6 +34,7 @@ const FormInputGroup = ({
         title="Password"
         showPassword={showPassword}
         type={showPassword ? 'text' : 'password'}
+        required
       />
     </div>
   );

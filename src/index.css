@@ -53,13 +53,20 @@ button {
   outline: none;
 }
 
-input[type="checkbox"] {
-    appearance: none;
-    border: none;
-    cursor: pointer;
-  }
+input[type='checkbox'] {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+}
 
-  input {
-    all: unset; /* Resets all inherited and non-inherited properties */
-    box-sizing: border-box; /* Ensures padding and border are included in width/height */
-  }
+input {
+  all: unset; /* Resets all inherited and non-inherited properties */
+  box-sizing: border-box; /* Ensures padding and border are included in width/height */
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+

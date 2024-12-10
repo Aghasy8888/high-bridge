@@ -4,6 +4,7 @@ import { forwardRef } from 'react';
 const Input = forwardRef(
   (
     {
+      autoComplete,
       changeHandler,
       className,
       placeholder = '',
@@ -29,6 +30,7 @@ const Input = forwardRef(
         ref={ref}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        autoComplete={autoComplete}
       />
     );
   }
@@ -40,6 +42,7 @@ Input.propTypes = {
   changeHandler: PropTypes.func.isRequired,
   handleFocus: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
+  autoComplete: PropTypes.string,
   className: PropTypes.string,
   placeholder: PropTypes.string,
   inputValue: PropTypes.string,
