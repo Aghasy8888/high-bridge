@@ -13,6 +13,7 @@ export default {
       },
       colors: {
         darkGray: '#212121',
+        darkGrayV2: '#232323',
         lighterGray: '#e0e0e0',
         middleGray: '#424242',
         lighterGray_2: '#e6eff5',
@@ -23,6 +24,8 @@ export default {
         activeBlue: '#2d60ff',
         darkBlue: '#343c6a',
         coolBlue: '#8ba3cb',
+        desaturatedBlue: '#718ebf',
+        tropicalGreen: '#15dba9',
       },
     },
   },
