@@ -1,19 +1,22 @@
 import { useRef, useState } from 'react';
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Checkbox, LoginFormHeader } from '../../common/';
 import { loginValidationSchema } from '../../helpers/validationSchemas';
 import { loginDefaultValues } from '../../data';
-import { Link } from 'react-router-dom';
 import { FormInputGroup } from './';
 import useFocusRef from '../../hooks/useFocusRef';
+import { login } from '../../redux/features/auth/userService';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [rememberMe, setRememberMe] = useState(false);
   const [formValues, setFormValues] = useState(loginDefaultValues);
   const [validationErrors, setValidationErrors] = useState({});
   const emailInputRef = useRef(null);
   useFocusRef(emailInputRef, []);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = formValues;
@@ -23,13 +26,11 @@ const LoginForm = () => {
         abortEarly: false,
       });
       const loginValues = {
-        email,
+        username: email,
         password,
       };
 
-      console.log('loginValues', loginValues);
-
-      //   dispatch(login({ data: loginValues, navigate }));
+      dispatch(login({ data: loginValues }));
       setValidationErrors({});
     } catch (error) {
       if (Yup.ValidationError.isError(error)) {
@@ -46,7 +47,7 @@ const LoginForm = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;    
+    const { name, value } = e.target;
     setFormValues((prevValues) => ({ ...prevValues, [name]: value }));
   };
 

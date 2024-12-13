@@ -1,13 +1,9 @@
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Header, Navigation } from '.';
-import { useEffect } from 'react';
+import useSharedLayoutEffects from '../../hooks/useSharedLayoutEffects';
 
 const SharedLayout = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate('/dashboard');
-  }, []);
+  useSharedLayoutEffects();
 
   return (
     <div className="flex h-[100vh]">

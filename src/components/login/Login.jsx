@@ -1,7 +1,17 @@
 import { logo } from '../../assets';
 import { BuildingTheFuture, LoginForm } from '.';
+import useLogin from '../../hooks/useLogin';
+import { useSelector } from 'react-redux';
+import { selectIsAuthenticated } from '../../redux/features/auth/authSlice';
 
 const Login = () => {
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  useLogin();
+
+  if (isAuthenticated) {
+    return null;
+  }
+
   return (
     <div className="flex justify-center w-screen font-zen h-screen bg-login bg-cover bg-center max-w-[2000px]">
       <div className="absolute inset-0 bg-overlay bg-cover bg-center"></div>
