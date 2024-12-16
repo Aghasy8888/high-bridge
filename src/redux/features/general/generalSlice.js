@@ -18,12 +18,14 @@ const generalSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(login.fulfilled, (state) => {
+        state.errorMessage = null;
         state.successMessage = 'Logged in successfully';
       })
       .addMatcher(
         (action) => [login.rejected.type].includes(action.type),
         (state, { payload: { errorMessage } }) => {
           state.loading = false;
+          state.successMessage = null;
           state.errorMessage = errorMessage;
         }
       );
