@@ -24,6 +24,7 @@ export default {
         activeBlue: '#2d60ff',
         darkBlue: '#343c6a',
         coolBlue: '#8ba3cb',
+        blueV1: '#123288',
         desaturatedBlue: '#718ebf',
         tropicalGreen: '#15dba9',
       },

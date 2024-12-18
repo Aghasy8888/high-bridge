@@ -1,6 +1,4 @@
-import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
-import redirect from './redirect';
 
 const apiUrl = import.meta.env.VITE_HIGH_BRIDGE_APP_API_URL;
 
@@ -13,7 +11,7 @@ export function checkLoginStatus() {
 }
 
 export async function loginRequest(data) {
-  const url = `${apiUrl}/login`;
+  const url = `${apiUrl}/admin/login`;
 
   const response = await axios.post(url, data, {
     headers: {
@@ -28,46 +26,22 @@ export async function loginRequest(data) {
   return response.data;
 }
 
-export async function getJWT() {
+export async function getJWT(navigate) {
   const token = localStorage.getItem('token');
 
   if (!token) {
-    logout();
+    logout(navigate);
     return null;
   }
 
   const parsed = JSON.parse(token);
-  const decoded = jwtDecode(parsed.access);
 
-  if (decoded.exp !== undefined && decoded.exp - Date.now() / 1000 < 60) {
-    try {
-      const response = await axios.put(
-        `${apiUrl}/user/${decoded.sub}/token`,
-        { refreshToken: parsed.refresh },
-        { headers: { 'Content-Type': 'application/json' } }
-      );
-
-      const newToken = response.data;
-
-      if (newToken.error) {
-        throw new Error(newToken.error);
-      }
-
-      saveToken(newToken);
-      return newToken.access;
-    } catch (error) {
-      console.error('Error refreshing token:', error.message || error);
-      logout();
-      return null;
-    }
-  }
-
-  return parsed.access;
+  return parsed
 }
 
-export function logout() {
+export function logout(navigate) {
   removeToken();
-  redirect('/login');
+  navigate('/login');
 }
 
 export function removeToken() {

@@ -4,6 +4,7 @@ import { Login } from './components/login';
 import { MainPage, SharedLayout } from './components/main';
 import useNotification from './hooks/useNotification';
 import { AuthRoute } from './components';
+import { Orders } from './components/orders';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +19,8 @@ function App() {
           <Route element={<AuthRoute type="private" />}>
             <Route path="/" element={<SharedLayout />}>
               <Route path="dashboard" element={<MainPage />} />
-              <Route path="orders" element={<h1>orders</h1>} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="orders/:orderId" element={<h1>single order</h1>} />
               <Route path="products" element={<h1>products</h1>} />
               <Route path="reviews" element={<h1>reviews</h1>} />
               <Route path="statistics" element={<h1>statistics</h1>} />

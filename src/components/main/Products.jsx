@@ -1,3 +1,4 @@
+import { TableCells } from '../../common';
 import bestSellingProducts from '../../data/bestSellingProducts';
 
 const Products = () => {
@@ -8,16 +9,13 @@ const Products = () => {
 
     return (
       <tr key={product.id}>
-        {Object.keys(product).map((key) => (
-          <td
-            key={key}
-            className={`${!isLastProduct ? 'pb-3' : ''} ${
-              key === 'quantity' ? 'text-tropicalGreen' : ''
-            }`}
-          >
-            {product[key]}.
-          </td>
-        ))}
+        <TableCells
+          isFirstItem={index === 0}
+          greenItemName="quantity"
+          isLastItem={isLastProduct}
+          item={product}
+          styles={{ paddingBottom: 'pb-3', paddingTop: 'pt-[10px]' }}
+        />
       </tr>
     );
   });

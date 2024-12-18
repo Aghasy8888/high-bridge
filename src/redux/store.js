@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import generalReducer from './features/general/generalSlice';
 import authReducer from './features/auth/authSlice';
+import orderReducer from './features/orders/orderSlice';
 import logger from 'redux-logger';
 
 const middleware = (getDefaultMiddleware) => {
@@ -14,6 +15,7 @@ const store = configureStore({
   reducer: {
     generalReducer,
     authReducer,
+    orderReducer,
   },
   middleware,
   devTools: import.meta.env.MODE === 'development',

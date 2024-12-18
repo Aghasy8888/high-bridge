@@ -6,11 +6,13 @@ const SharedLayout = () => {
   useSharedLayoutEffects();
 
   return (
-    <div className="flex h-[100vh]">
+    <div className="flex min-h-screen">
       <Navigation />
       <div className="w-full">
         <Header />
-        <Outlet />
+        <div className="min-h-screen bg-whiteV3">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ function AuthRoute({ type }) {
   if (isAuthenticated && type === 'public') {
     return <Navigate to="/" />;
   }
-  if (!isAuthenticated && type === 'private') {
+  if (isAuthenticated === false && type === 'private') {  
     return <Navigate to="/login" />;
   }
 

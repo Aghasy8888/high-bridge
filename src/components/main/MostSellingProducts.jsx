@@ -1,3 +1,4 @@
+import { Tr } from '../../common';
 import { Products } from './';
 
 const MostSellingProducts = () => {
@@ -5,12 +6,12 @@ const MostSellingProducts = () => {
     <div className="py-5 pl-12">
       <table className="w-full">
         <thead>
-          <tr className="text-desaturatedBlue text-base font-medium">
+          <Tr>
             <th className="text-start pb-3 pr-8">Id</th>
             <th className="text-start pb-3">Name</th>
             <th className="text-start pb-3 w-[25%]">Price</th>
             <th className="text-start pb-3">Quantity</th>
-          </tr>
+          </Tr>
         </thead>
         <tbody className="text-darkGrayV2 text-base">
           <Products />

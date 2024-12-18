@@ -4,7 +4,7 @@ import { saveToken } from '../../../helpers/auth';
 import { LOGIN_SUCCESS_MESSAGE } from '../../../../constants';
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: null,
   loading: false,
   userInfo: null,
 };

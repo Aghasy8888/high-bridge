@@ -8,7 +8,7 @@ import {
 
 const MainPage = () => {
   return (
-    <div className="h-full pl-12 pr-10 pt-7 bg-whiteV3">
+    <div className="pl-12 pr-10 pt-7">
       <div className="flex gap-[30px] w-full">
         <SectionWrapper
           content={<MostSellingProducts />}
