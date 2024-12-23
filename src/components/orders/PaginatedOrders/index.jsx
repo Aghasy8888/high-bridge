@@ -8,11 +8,11 @@ import {
   selectOrderPagination,
 } from '../../../redux/features/orders/orderSlice';
 import { getOrders } from '../../../redux/features/orders/orderService';
-import OrderList from '../OrderList';
+import Orders from '../Orders';
 
 import './pagination.css';
 
-const Orders = () => {
+const PaginatedOrders = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const pagination = useSelector(selectOrderPagination);
@@ -48,7 +48,7 @@ const Orders = () => {
                   <td className="py-6">Loading...</td>
                 </tr>
               ) : (
-                <OrderList />
+                <Orders />
               )}
             </tbody>
           </table>
@@ -73,4 +73,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default PaginatedOrders;

@@ -12,7 +12,7 @@ const TableCells = ({
         isFirstItem ? paddingTop : ''
       } ${key === greenItemName ? 'text-tropicalGreen' : ''}`}
     >
-      {item[key]}
+      {key === 'orderId' ? `#${item[key]}` : item[key]}
       {key === 'id' ? '.' : ''}
     </td>
   ));

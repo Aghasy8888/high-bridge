@@ -8,7 +8,7 @@ export const filterRequiredProps = (orders) => {
     const { currency, total_price } = order_items;
 
     return {
-      orderId: `#${id}`,
+      orderId: id,
       user_id,
       date: formatDate(date),
       amount: `${total_price} ${currency}`,

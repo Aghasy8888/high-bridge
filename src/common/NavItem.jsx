@@ -4,7 +4,9 @@ import { activeLinkIcon } from '../assets';
 
 const NavItem = ({ item }) => {
   const location = useLocation();
-  const isActive = location.pathname === item.path;
+  const pageName = location.pathname.split('/')[1];
+  
+  const isActive = `/${pageName}` === item.path;
 
   return (
     <li className="relative flex gap-6 pl-11 py-4">

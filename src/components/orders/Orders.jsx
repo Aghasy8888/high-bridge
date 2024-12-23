@@ -2,8 +2,9 @@ import { useSelector } from 'react-redux';
 import { selectOrders } from '../../redux/features/orders/orderSlice';
 import { filterRequiredProps } from '../../helpers';
 import { TableCells } from '../../common';
+import { Link } from 'react-router-dom';
 
-const OrderList = () => {
+const Orders = () => {
   const orders = useSelector(selectOrders);
   const ordersForMap = filterRequiredProps(orders);
   const isLastIndex = ordersForMap.length - 1;
@@ -26,13 +27,16 @@ const OrderList = () => {
             isFirstOrder ? 'pt-5' : ''
           } text-blueV1`}
         >
-          <button className="py-[5px] px-4 text-start w-full border border-solid rounded-[50px]  border-blueV1">
+          <Link
+            to={`/orders/${order.orderId}`}
+            className="py-[5px] block px-4 text-start w-full border border-solid rounded-[50px]  border-blueV1"
+          >
             View
-          </button>
+          </Link>
         </td>
       </tr>
     );
   });
 };
 
-export default OrderList;
+export default Orders;

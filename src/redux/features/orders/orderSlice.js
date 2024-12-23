@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getOrders } from './orderService';
+import { getOrder, getOrders } from './orderService';
 
 const initialState = {
+  order: {},
   orders: [],
   pagination: null,
   loading: false,
@@ -18,14 +19,25 @@ const orderSlice = createSlice({
         state.pagination = payload.orders.pagination;
         state.loading = false;
       })
+      .addCase(getOrder.fulfilled, (state, { payload }) => {
+        state.order = payload.order.data;
+        state.loading = false;
+      })
       .addMatcher(
-        (action) => [getOrders.pending.type].includes(action.type),
+        (action) => {
+          return [getOrders.pending.type, getOrder.pending.type].includes(
+            action.type
+          );
+        },
         (state) => {
           state.loading = true;
         }
       )
       .addMatcher(
-        (action) => [getOrders.rejected.type].includes(action.type),
+        (action) =>
+          [getOrders.rejected.type, getOrder.rejected.type].includes(
+            action.type
+          ),
         (state) => {
           state.loading = false;
         }
@@ -36,5 +48,6 @@ const orderSlice = createSlice({
 export const selectOrderLoading = (state) => state.orderReducer.loading;
 export const selectOrders = (state) => state.orderReducer.orders;
 export const selectOrderPagination = (state) => state.orderReducer.pagination;
+export const selectOrderInDetails = (state) => state.orderReducer.order;
 
 export default orderSlice.reducer;

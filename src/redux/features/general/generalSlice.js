@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { login } from '../auth/userService';
-import { getOrders } from '../orders/orderService';
+import { getOrder, getOrders } from '../orders/orderService';
 import { TOKEN_EXPIRED_NOTIFICATION } from '../../../../constants';
-import { logout } from '../../../helpers/auth';
 
 const initialState = {
   test: '',
@@ -26,18 +25,16 @@ const generalSlice = createSlice({
       })
       .addMatcher(
         (action) =>
-          [login.rejected.type, getOrders.rejected.type].includes(action.type),
+          [
+            login.rejected.type,
+            getOrders.rejected.type,
+            getOrder.rejected.type,
+          ].includes(action.type),
         (state, { payload: { errorMessage, status } }) => {
           state.loading = false;
           state.successMessage = null;
           state.errorMessage =
             status === 401 ? TOKEN_EXPIRED_NOTIFICATION : errorMessage;
-
-          if (status === 401) {
-            setTimeout(() => {
-              logout();
-            }, 200);
-          }
         }
       );
   },

@@ -39,7 +39,7 @@ export async function getJWT(navigate) {
   return parsed
 }
 
-export function logout(navigate) {
+export function logout(navigate) {  
   removeToken();
   navigate('/login');
 }
