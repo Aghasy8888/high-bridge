@@ -1,15 +1,24 @@
 import { logo } from '../../assets';
+import { Spinner } from '../../common';
 import { BuildingTheFuture, LoginForm } from '.';
 import useLogin from '../../hooks/useLogin';
 import { useSelector } from 'react-redux';
-import { selectIsAuthenticated } from '../../redux/features/auth/authSlice';
+import {
+  selectAuthLoading,
+  selectIsAuthenticated,
+} from '../../redux/features/auth/authSlice';
 
 const Login = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const loading = useSelector(selectAuthLoading);
   useLogin();
 
   if (isAuthenticated) {
     return null;
+  }
+
+  if (loading) {
+    return <Spinner />;
   }
 
   return (
