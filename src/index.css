@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Zen Kaku Gothic Antique';
+  src: local('ZenKakuGothicAntique-Regular'),
+    url('./assets/fonts/Zen_Kaku_Gothic_Antique/ZenKakuGothicAntique-Regular.ttf')
+      format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Zen Kaku Gothic Antique';
+  src: local('ZenKakuGothicAntique-Bold'),
+    url('./assets/fonts/Zen_Kaku_Gothic_Antique/ZenKakuGothicAntique-Bold.ttf')
+      format('ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter_18pt-Regular'),
+    url('./assets/fonts/Inter/Inter_18pt-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter_18pt-Bold'),
+    url('./assets/fonts/Inter/Inter_18pt-Bold.ttf') format('ttf');
+  font-weight: bolder;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter_18pt-SemiBold'),
+    url('./assets/fonts/Inter/Inter_18pt-SemiBold.ttf') format('ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+button {
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  all: unset; /* Resets all inherited and non-inherited properties */
+  box-sizing: border-box; /* Ensures padding and border are included in width/height */
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
